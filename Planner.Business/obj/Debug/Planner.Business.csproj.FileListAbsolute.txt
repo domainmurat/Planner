@@ -1,0 +1,16 @@
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Planner.Business.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Planner.Business.pdb
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Planner.DataAccess.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\EntityFramework.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Planner.DataAccess.pdb
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Planner.DataAccess.dll.config
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\EntityFramework.xml
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.csprojAssemblyReference.cache
+C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.csproj.CoreCompileInputs.cache
+C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.csproj.CopyComplete
+C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.pdb
