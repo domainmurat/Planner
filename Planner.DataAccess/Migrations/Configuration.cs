@@ -36,9 +36,8 @@ namespace Planner.DataAccess.Migrations
                     FirstName = "Murat Can",
                     LastName = "OGUZHAN",
                     Email = "m.c.ogzhan@gmail.com",
-                    UserName = "muratcanoguzhan",
-                    PhoneNumber = "905388758610",
-                    LockoutEnabled = true
+                    UserName = "m.c.ogzhan@gmail.com",
+                    PhoneNumber = "905388758610"
                 };
 
                 var user2 = new User
@@ -46,8 +45,7 @@ namespace Planner.DataAccess.Migrations
                     FirstName = "Medyasoft",
                     LastName = "Soft",
                     Email = "medyasoft@medyasoft.com.tr",
-                    UserName = "medyasoft",
-                    LockoutEnabled = true
+                    UserName = "medyasoft@medyasoft.com.tr"
                 };
 
                 var user3 = new User
@@ -55,8 +53,7 @@ namespace Planner.DataAccess.Migrations
                     FirstName = "Test",
                     LastName = "User",
                     Email = "test@test.com",
-                    UserName = "testuser",
-                    LockoutEnabled = true
+                    UserName = "test@test.com"
                 };
 
                 var userStore = new UserStore<User>(context);
