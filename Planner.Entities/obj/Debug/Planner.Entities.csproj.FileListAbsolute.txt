@@ -1,6 +1,0 @@
-C:\Users\murat\source\repos\Planner\Planner.Entities\bin\Debug\Planner.Entities.dll
-C:\Users\murat\source\repos\Planner\Planner.Entities\bin\Debug\Planner.Entities.pdb
-C:\Users\murat\source\repos\Planner\Planner.Entities\obj\Debug\Planner.Entities.csprojAssemblyReference.cache
-C:\Users\murat\source\repos\Planner\Planner.Entities\obj\Debug\Planner.Entities.csproj.CoreCompileInputs.cache
-C:\Users\murat\source\repos\Planner\Planner.Entities\obj\Debug\Planner.Entities.dll
-C:\Users\murat\source\repos\Planner\Planner.Entities\obj\Debug\Planner.Entities.pdb
