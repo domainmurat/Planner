@@ -20,5 +20,42 @@ namespace Planner.Business.Concrete
         {
             _subjectRepository = subjectRepository;
         }
+
+        public void ChangeParent(Subject subject, string userId)
+        {
+            var children = GetChildren(subject, new List<Subject>());
+
+            Subject subjectEntity = GetById(subject.Id);
+
+            subjectEntity.UserId = userId;
+            subjectEntity.Name = subject.Name;
+            subjectEntity.Detail = subject.Detail;
+            int? currentParentId = subjectEntity.ParentSubjectId;
+            subjectEntity.ParentSubjectId = subject.ParentSubjectId;
+            subjectEntity.UserId = userId;
+
+            if (children.Any(x => x.Id == subject.ParentSubjectId))
+            {
+                Subject parentSubjectEntity = GetById(subject.ParentSubjectId.GetValueOrDefault());
+                parentSubjectEntity.ParentSubjectId = currentParentId;
+                Update(parentSubjectEntity);
+            }
+
+            Update(subjectEntity);
+        }
+
+        public IList<Subject> GetChildren(Subject subject, List<Subject> childrenSubjects)
+        {
+            List<Subject> children = GetAllListWithoutDeleted(x => x.ParentSubjectId == subject.Id).ToList();
+
+            childrenSubjects.AddRange(children);
+
+            foreach (var item in children)
+            {
+                GetChildren(item, childrenSubjects);
+            }
+
+            return childrenSubjects;
+        }
     }
 }

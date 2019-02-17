@@ -21,5 +21,6 @@ namespace Planner.DataAccess.Interfaces.Main
         void Update(T entity);
         void Delete(int id);
         void DeletePermanently(int id);
+
     }
 }

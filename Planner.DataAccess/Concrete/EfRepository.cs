@@ -14,80 +14,80 @@ namespace Planner.DataAccess.Concrete
     public abstract class EfRepository<T> : IRepository<T>, IAsyncRepository<T> where T : BaseEntity
     {
         private readonly DbContext _dbContext;
-        private readonly DbSet<T> _dbSet;
+        protected readonly DbSet<T> _dbSet;
         public EfRepository(PlannerContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<T>();
         }
 
-        public T Get(Expression<Func<T, bool>> predicate)
+        public virtual T Get(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate).SingleOrDefault();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).SingleOrDefaultAsync();
         }
 
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return _dbSet;
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
+        public virtual IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate);
         }
 
-        public async Task<IList<T>> GetAllAsync()
+        public virtual async Task<IList<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return _dbSet.Find(id);
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             _dbSet.Add(entity);
             _dbContext.SaveChanges();
         }
 
-        public async Task AddAsync(T entity)
+        public virtual async Task AddAsync(T entity)
         {
             _dbSet.Add(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             _dbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
 
-        public async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             _dbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             var entity = GetById(id);
             if (entity == null) return;
@@ -98,7 +98,7 @@ namespace Planner.DataAccess.Concrete
             }
         }
 
-        public async Task DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
             var entity = await GetByIdAsync(id);
             if (entity == null) return;
@@ -109,7 +109,7 @@ namespace Planner.DataAccess.Concrete
             }
         }
 
-        public void DeletePermanently(int id)
+        public virtual void DeletePermanently(int id)
         {
             var entity = GetById(id);
             if (entity == null) return;
@@ -130,7 +130,7 @@ namespace Planner.DataAccess.Concrete
             }
         }
 
-        public async Task DeletePermanentlyAsync(int id)
+        public virtual async Task DeletePermanentlyAsync(int id)
         {
             var entity = await GetByIdAsync(id);
             if (entity == null) return;
@@ -149,12 +149,12 @@ namespace Planner.DataAccess.Concrete
             }
         }
 
-        public IList<T> GetAllList()
+        public virtual IList<T> GetAllList()
         {
             return _dbSet.ToList();
         }
 
-        public IList<T> GetAllList(Expression<Func<T, bool>> predicate)
+        public virtual IList<T> GetAllList(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate).ToList();
         }

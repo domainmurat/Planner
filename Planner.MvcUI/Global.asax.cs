@@ -53,10 +53,14 @@ namespace Planner.MvcUI
             //  .UseWcfSafeRelease();
 
             // Register application dependencies.
-            builder.RegisterType<SubjectManager>().As<ISubjcetService>()
-                .WithParameter(new TypedParameter(typeof(PlannerContext), new PlannerContext()))
-                .WithParameter(new TypedParameter(typeof(ISubjectRepository), new SubjectRepository(new PlannerContext())));
-            
+            builder.RegisterType<PlannerContext>().As<PlannerContext>();
+            builder.RegisterType<SubjectRepository>().As<ISubjectRepository>();
+            builder.RegisterType<SubjectManager>().As<ISubjcetService>();
+
+            //builder.RegisterType<SubjectManager>().As<ISubjcetService>()
+            //    .WithParameter(new TypedParameter(typeof(PlannerContext), new PlannerContext()))
+            //    .WithParameter(new TypedParameter(typeof(ISubjectRepository), new SubjectRepository(new PlannerContext())));
+
 
             // MVC - Set the dependency resolver to be Autofac.
             var container = builder.Build();

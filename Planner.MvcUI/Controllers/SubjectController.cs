@@ -9,32 +9,34 @@ using System.Web.Mvc;
 using Planner.Business.Abstract;
 using Planner.DataAccess.Context;
 using Planner.DataAccess.PlannerAggregate;
+using Planner.MvcUI.Helper;
 
 namespace Planner.MvcUI.Controllers
 {
     [Authorize]
-    public class SubjectController : Controller
+    public class SubjectController : BaseController
     {
-        private readonly ISubjcetService subjcetService;
+        private readonly ISubjcetService _subjcetService;
 
         public SubjectController(ISubjcetService subjcetService)
         {
-            this.subjcetService = subjcetService;
+            this._subjcetService = subjcetService;
         }
 
         // GET: Subject
         public ActionResult Index()
         {
             //var Subject = db.Subject.Include(s => s.ParentSubject).Include(s => s.User);
-            var Subject = subjcetService.GetAllList();
-            return View(Subject);
+            var subjects = _subjcetService.GetAllListWithoutDeleted();
+            return View(subjects);
         }
 
         // GET: Subject/Create
         public ActionResult Create()
         {
-            ViewBag.ParentSubjectId = new SelectList(subjcetService.GetAllList(), "Id", "Name");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
+            var subjects = _subjcetService.GetAllListWithoutDeleted();
+            List<SelectListItem> selectListItems = DropDownHelper.ToSelectListItem(subjects);
+            ViewBag.ParentSubjectId = selectListItems;
             return View();
         }
 
@@ -47,14 +49,15 @@ namespace Planner.MvcUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                subject.UserId= Request.GetOwinContext().Authentication.User
-                db.Subject.Add(subject);
-                db.SaveChanges();
+                subject.UserId = CurrentUser().Id;
+                _subjcetService.Add(subject);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ParentSubjectId = new SelectList(db.Subject, "Id", "Name", subject.ParentSubjectId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", subject.UserId);
+            var subjects = _subjcetService.GetAllListWithoutDeleted();
+            List<SelectListItem> selectListItems = DropDownHelper.ToSelectListItem(subjects);
+            ViewBag.ParentSubjectId = new SelectList(selectListItems, "Value", "Text", subject.ParentSubjectId);
+
             return View(subject);
         }
 
@@ -65,13 +68,15 @@ namespace Planner.MvcUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subject subject = db.Subject.Find(id);
+            Subject subject = _subjcetService.GetById(id.GetValueOrDefault());
             if (subject == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ParentSubjectId = new SelectList(db.Subject, "Id", "Name", subject.ParentSubjectId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", subject.UserId);
+            var subjects = _subjcetService.GetAllListWithoutDeleted(x => x.Id != id);
+            List<SelectListItem> selectListItems = DropDownHelper.ToSelectListItem(subjects);
+            ViewBag.ParentSubjectId = new SelectList(selectListItems, "Value", "Text", subject.ParentSubjectId);
+
             return View(subject);
         }
 
@@ -80,16 +85,19 @@ namespace Planner.MvcUI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Detail,ParentSubjectId,UserId,CreatedDate,UpdatedDate,DeletedDate,CreatedUser,UpdatedUser,DeletedUser,Deleted")] Subject subject)
+        public ActionResult Edit([Bind(Include = "Id,Name,Detail,ParentSubjectId")] Subject subject)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subject).State = EntityState.Modified;
-                db.SaveChanges();
+
+                _subjcetService.ChangeParent(subject, CurrentUser().Id);
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentSubjectId = new SelectList(db.Subject, "Id", "Name", subject.ParentSubjectId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", subject.UserId);
+
+            var subjects = _subjcetService.GetAllListWithoutDeleted(x => x.Id != subject.Id);
+            List<SelectListItem> selectListItems = DropDownHelper.ToSelectListItem(subjects);
+            ViewBag.ParentSubjectId = new SelectList(selectListItems, "Value", "Text", subject.ParentSubjectId);
+
             return View(subject);
         }
 
@@ -100,7 +108,7 @@ namespace Planner.MvcUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subject subject = db.Subject.Find(id);
+            Subject subject = _subjcetService.GetById(id.GetValueOrDefault());
             if (subject == null)
             {
                 return HttpNotFound();
@@ -113,19 +121,8 @@ namespace Planner.MvcUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Subject subject = db.Subject.Find(id);
-            db.Subject.Remove(subject);
-            db.SaveChanges();
+            _subjcetService.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
