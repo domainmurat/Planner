@@ -16,6 +16,7 @@ namespace Planner.DataAccess.Context
         public PlannerContext()
            : base("name=cn", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new DatabaseInitializer());
         }
 
         public DbSet<Subject> Subject { get; set; }

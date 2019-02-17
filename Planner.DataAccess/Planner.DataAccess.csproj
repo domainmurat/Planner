@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\DatabaseInitializer.cs" />
     <Compile Include="Entities\PlannerAggregate\Assignment.cs" />
     <Compile Include="Interfaces\Repositories\ISubjectRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAssignmentRepository.cs" />

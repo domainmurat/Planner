@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Planner.MvcUI.Controllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
         // GET: Base
