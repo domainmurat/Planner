@@ -12,6 +12,8 @@ namespace Planner.DataAccess.Interfaces.Main
     {
         IQueryable<T> GetAll();
         IQueryable<T> GetAll(Expression<Func<T, bool>> predicate);
+        IList<T> GetAllList();
+        IList<T> GetAllList(Expression<Func<T, bool>> predicate);
         T GetById(int id);
         T Get(Expression<Func<T, bool>> predicate);
 

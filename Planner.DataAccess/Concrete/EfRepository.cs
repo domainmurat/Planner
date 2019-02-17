@@ -148,5 +148,15 @@ namespace Planner.DataAccess.Concrete
                 await _dbContext.SaveChangesAsync();
             }
         }
+
+        public IList<T> GetAllList()
+        {
+            return _dbSet.ToList();
+        }
+
+        public IList<T> GetAllList(Expression<Func<T, bool>> predicate)
+        {
+            return _dbSet.Where(predicate).ToList();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Planner.Business.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,16 @@ namespace Planner.MvcUI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ISubjcetService _subjcetService;
+
+        public HomeController(ISubjcetService subjcetService)
+        {
+            this._subjcetService = subjcetService;
+        }
         public ActionResult Index()
         {
+            var subjects = _subjcetService.GetAllList();
+            ViewBag.Subjects = subjects;
             return View();
         }
 

@@ -16,3 +16,4 @@ C:\Users\murat\source\repos\Planner\Planner.DataAccess\obj\Debug\Planner.DataAcc
 C:\Users\murat\source\repos\Planner\Planner.DataAccess\obj\Debug\Planner.DataAccess.dll
 C:\Users\murat\source\repos\Planner\Planner.DataAccess\obj\Debug\Planner.DataAccess.pdb
 C:\Users\murat\source\repos\Planner\Planner.DataAccess\obj\Debug\Planner.DataAccess.csprojAssemblyReference.cache
+C:\Users\murat\source\repos\Planner\Planner.DataAccess\obj\Debug\Planner.DataAccess.Migrations.inital2.resources

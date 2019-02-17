@@ -112,3 +112,7 @@ C:\Users\murat\source\repos\Planner\Planner.MvcUI\obj\Debug\Planner.MvcUI.csproj
 C:\Users\murat\source\repos\Planner\Planner.MvcUI\obj\Debug\Planner.MvcUI.csproj.CopyComplete
 C:\Users\murat\source\repos\Planner\Planner.MvcUI\obj\Debug\Planner.MvcUI.dll
 C:\Users\murat\source\repos\Planner\Planner.MvcUI\obj\Debug\Planner.MvcUI.pdb
+C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.dll
+C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.Integration.Mvc.dll
+C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.xml
+C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.Integration.Mvc.xml
