@@ -1,4 +1,5 @@
-﻿using Planner.DataAccess.Interfaces.Repositories;
+﻿using Planner.Business.Dtos;
+using Planner.DataAccess.Interfaces.Repositories;
 using Planner.DataAccess.PlannerAggregate;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Planner.Business.Abstract
     public interface ISubjcetService : ISubjectRepository
     {
         void ChangeParent(Subject subject, string userId);
-        IList<Subject> GetChildren(Subject subject, List<Subject> childrenSubjects);
+        IList<Subject> GetAllChildren(Subject subject, List<Subject> childrenSubjects);
+        List<Subject> GetChildren(Subject subject);
+        List<Child> GetSubjectSchema(string userId);
     }
 }

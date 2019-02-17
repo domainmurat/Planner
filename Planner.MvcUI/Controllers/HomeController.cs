@@ -1,4 +1,5 @@
-﻿using Planner.Business.Abstract;
+﻿using Newtonsoft.Json;
+using Planner.Business.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,8 @@ using System.Web.Mvc;
 
 namespace Planner.MvcUI.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public class HomeController : BaseController
     {
         private readonly ISubjcetService _subjcetService;
 
@@ -17,8 +19,9 @@ namespace Planner.MvcUI.Controllers
         }
         public ActionResult Index()
         {
-            var subjects = _subjcetService.GetAllList();
-            ViewBag.Subjects = subjects;
+            var children = _subjcetService.GetSubjectSchema(CurrentUser().Id);
+            var childrenJson = JsonConvert.SerializeObject(children);
+            ViewBag.Subjects = childrenJson;
             return View();
         }
 

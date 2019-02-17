@@ -116,3 +116,4 @@ C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.dll
 C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.Integration.Mvc.dll
 C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.xml
 C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Autofac.Integration.Mvc.xml
+C:\Users\murat\source\repos\Planner\Planner.MvcUI\bin\Planner.Business.dll.config

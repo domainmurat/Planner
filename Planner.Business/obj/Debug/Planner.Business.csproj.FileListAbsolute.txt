@@ -14,3 +14,6 @@ C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.
 C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.csproj.CopyComplete
 C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.dll
 C:\Users\murat\source\repos\Planner\Planner.Business\obj\Debug\Planner.Business.pdb
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\Planner.Business.dll.config
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\murat\source\repos\Planner\Planner.Business\bin\Debug\EntityFramework.SqlServer.xml

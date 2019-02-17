@@ -1,45 +1,65 @@
-﻿@using Planner.DataAccess.PlannerAggregate
+﻿@using Planner.Business.Dtos
 @{
     ViewBag.Title = "Home Page";
 }
 
-<div class="col-md-12">
-    <table class="table tab-content">
-        @foreach (var item in (List<Subject>)ViewBag.Subjects)
-        {
-            <tr>
-                <td>
-                    @item.Name
-                </td>
-            </tr>
+<link href="~/Content/treant-js-master/Treant.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+    /* optional Container STYLES */
+    .chart {
+        height: 159px;
+        width: 332px;
+        margin: 5px;
+        margin: 5px auto;
+        border: 3px solid #DDD;
+        border-radius: 3px;
+    }
+
+    .node {
+        color: #9CB5ED;
+        border: 2px solid #C8C8C8;
+        border-radius: 3px;
+    }
+
+        .node p {
+            font-size: 20px;
+            line-height: 20px;
+            height: 20px;
+            font-weight: bold;
+            padding: 3px;
+            margin: 0;
         }
-    </table>
-</div>
+</style>
 
-@*<div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+@section Scripts {
+    <script src="~/Content/treant-js-master/vendor/raphael.js"></script>
+    <script src="~/Content/treant-js-master/Treant.js"></script>
+    <script type="text/javascript">
+        var subjects = JSON.parse('@Html.Raw(ViewBag.Subjects)');
+        simple_chart_config = {
+            chart: {
+                container: "#tree-simple"
+            },
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
-    </div>*@
+            nodeStructure: {
+                text: { name: "Subjects" },
+                children: subjects
+            }
+        };
+        var my_chart = new Treant(simple_chart_config);
+    </script>
+
+}
+    <div id="tree-simple" style="width:100%; height: 100%"> </div>
+    @*<table class="table tab-content">
+            @foreach (var item in (List<Subject>)ViewBag.Subjects)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                </tr>
+            }
+        </table>*@
+

@@ -15,7 +15,7 @@ namespace Planner.DataAccess.Concrete
     {
         public SubjectRepository(PlannerContext plannerContext) : base(plannerContext)
         {
-
+            
         }
         public override IList<Subject> GetAllList(Expression<Func<Subject, bool>> predicate)
         {
