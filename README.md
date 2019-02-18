@@ -12,7 +12,7 @@ After that you will see your plan like that;
 
 ![Main View](https://github.com/domainmurat/Planner/blob/master/IndexPage.PNG?raw=true)
 
-When you click edit button to change hierarchy,for example Parent of `Modals` from English to `Present`.
+When you click edit button to change hierarchy,for example Parent of `Modals` from `English` to `Present`.
 
 ![Location Change](https://github.com/domainmurat/Planner/blob/master/Screenshot_1.png?raw=true)
 
