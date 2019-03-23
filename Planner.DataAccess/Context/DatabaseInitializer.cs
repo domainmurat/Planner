@@ -37,14 +37,6 @@ namespace Planner.DataAccess.Context
                     PhoneNumber = "905388758610"
                 };
 
-                var user2 = new User
-                {
-                    FirstName = "Medyasoft",
-                    LastName = "Soft",
-                    Email = "medyasoft@medyasoft.com.tr",
-                    UserName = "medyasoft@medyasoft.com.tr"
-                };
-
                 var user3 = new User
                 {
                     FirstName = "Test",
@@ -64,12 +56,10 @@ namespace Planner.DataAccess.Context
                 var userStore = new UserStore<User>(context);
                 var manager = new UserManager<User>(userStore);
                 manager.Create(user, "Test1234_");
-                manager.Create(user2, "Test1234_");
                 manager.Create(user3, "Test1234_");
                 manager.Create(user4, "Test1234_");
 
                 manager.AddToRole(user.Id, "Admin");
-                manager.AddToRole(user2.Id, "Admin");
                 manager.AddToRole(user3.Id, "Normal");
                 manager.AddToRole(user4.Id, "Admin");
             }
